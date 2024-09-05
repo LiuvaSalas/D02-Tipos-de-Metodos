@@ -26,26 +26,20 @@ class Personaje:
 
         self.experiencia = tmp_exp
 
-    def __lt__(self, other):
-        return (
-            self.experiencia < other.experiencia
-        )
+    def __lt__(self, enemigo):
+        return self.experiencia < enemigo.experiencia
 
-    def __gt__(self, other):
-        return (
-            self.experiencia > other.experiencia
-        )
+    def __gt__(self, enemigo):
+        return self.experiencia > enemigo.experiencia
 
-    def __eq__(self, other):
-        return (
-            self.experiencia == other.experiencia
-        )
+    def __eq__(self, enemigo):
+        return self.experiencia == enemigo.experiencia
 
-    def get_probabilidad_ganar(self, personaje, other):
-        if personaje < other:
+    def get_probabilidad_ganar(self, personaje, enemigo):
+        if personaje < enemigo:
             probabilidad_ganar = 0.33
             return probabilidad_ganar
-        elif personaje > other:
+        elif personaje > enemigo:
             probabilidad_ganar = 0.66
             return probabilidad_ganar
         else:
@@ -56,6 +50,6 @@ class Personaje:
     def mostrar_dialogo_opcion(probabilidad_ganar):
         return int(
             input(
-                f"\nCon tu nivel actual, tienes {probabilidad_ganar * 100}% de probabilidades de ganar contra el Orco.\nSi ganas, ganarás 50 puntos de experiencia y el orco perderá 30.\nSi pierdes, perderás 30 puntos de experiencia y el orco ganará 50.\n¿Qué deseas hacer?\n1. Atacar\n2. Huir\n"
+                f"\nCon tu nivel actual, tienes {probabilidad_ganar * 100}% de probabilidades de ganar contra el Orco.\nSi ganas, obtendras 50 puntos de experiencia y el orco perderá 30.\nSi pierdes, perderás 30 puntos de experiencia y el orco ganará 50.\n¿Qué deseas hacer?\n1. Atacar\n2. Huir\n"
             )
         )

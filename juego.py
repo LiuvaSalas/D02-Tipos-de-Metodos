@@ -1,19 +1,21 @@
 from personaje import Personaje
 import random
 
-print("¡Bienvenido a Gran Realidad!\n")
+print("¡Bienvenido a Gran Fantasía!\n")
 nombre = input("Por favor indique el nombre de su personaje:\n")
 
-p = Personaje(nombre)
-print(p.estado)
+mi_personaje = Personaje(nombre)
+print(mi_personaje.estado)
 
 print("\n¡Oh no!, ¡Ha aparecido un Orco!")
-o = Personaje("Orco")
+enemigo = Personaje("Orco")
 
-print(p.estado)
-print(o.estado)
+print(mi_personaje.estado)
+print(enemigo.estado)
 
-probabilidad_ganar = p.get_probabilidad_ganar(p.nivel, o.nivel)
+probabilidad_ganar = mi_personaje.get_probabilidad_ganar(
+    mi_personaje.nivel, enemigo.nivel
+)
 
 opcion_personaje = Personaje.mostrar_dialogo_opcion(probabilidad_ganar)
 
@@ -28,21 +30,23 @@ while opcion_personaje == 1:
 
     if resultado == "G":
         print(
-            "\n¡Le has ganado al orco, felicidades!\n¡Recibirás 50 puntos de experiencia!\n"
+            "\n¡Le has ganado al orco, felicidades!\n¡Recibiste 50 puntos de experiencia!\n"
         )
-        p.estado = 50
-        o.estado = -30
+        mi_personaje.estado = 50
+        enemigo.estado = -30
 
     else:
         print(
             "\n¡Oh no! ¡El orco te ha ganado!\n¡Has perdido 30 puntos de experiencia!\n"
         )
-        p.estado = -30
-        o.estado = 50
+        mi_personaje.estado = -30
+        enemigo.estado = 50
 
-    print(p.estado)
-    print(o.estado)
+    print(mi_personaje.estado)
+    print(enemigo.estado)
 
-    probabilidad_ganar = p.get_probabilidad_ganar(p.nivel, o.nivel)
+    probabilidad_ganar = mi_personaje.get_probabilidad_ganar(
+        mi_personaje.nivel, enemigo.nivel
+    )
     opcion_personaje = Personaje.mostrar_dialogo_opcion(probabilidad_ganar)
-print("\nDont worry, ¡Lo dejaste atras!\n")
+print("\nHas huido, lo dejaste atras!\n")
